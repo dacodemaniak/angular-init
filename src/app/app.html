@@ -7,6 +7,18 @@
 
 <ul>
   @for (theme of themes; track theme.id) {
-    <li>{{ theme.value }}</li>
+      <li 
+        [ngClass]="{'theme': true,
+          'is-even': theme.id! % 2 === 0,
+          'is-odd': theme.id! % 2 !== 0 
+        }">{{ theme.value }}</li>
+
+        <app-note
+          [theme]="theme"
+          (onUpdateTheme)="updateTheme($event)"
+        ></app-note>
   }
 </ul>
+
+<input [type]="inputType" placeholder="Type your password...">
+<button type="button" (click)="switchVisibililty()">Show / Hide</button>

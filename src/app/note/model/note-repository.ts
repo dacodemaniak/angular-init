@@ -1,3 +1,5 @@
+import { ThemeType } from "./theme.type"
+
 export class NoteRepository {
     private _id = 0
     private _themes = new Map<number, string>()
@@ -36,19 +38,15 @@ export class NoteRepository {
         return this._themes
     }
 
-    public getThemesAsArray(): any[] {
-        const values = [...this._themes.values()]
-        const keys = [... this._themes.keys()]
+    public getThemesAsArray(): ThemeType[] {
 
-        const themes = []
-
-        for (let i=0; i < values.length; i++) {
+        const themes: Array<ThemeType> = []
+        this._themes.forEach((value: string, key: number) => {
             themes.push({
-                id: keys[i],
-                value: values[i]
+                id: key,
+                value
             })
-        }
-
+        })
         return themes
 
     }
