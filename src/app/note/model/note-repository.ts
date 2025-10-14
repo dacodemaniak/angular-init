@@ -4,6 +4,8 @@ export class NoteRepository {
     private _id = 0
     private _date: Date = new Date()
     private _themes = new Map<number, string>()
+    private _titre: string = ''
+    private _content: string = ''
 
     /**
      * 
@@ -25,6 +27,22 @@ export class NoteRepository {
 
     public set date(date: Date) {
         this._date = date
+    }
+    
+    public set titre(titre: string) {
+        this._titre = titre
+    }
+
+    public get titre(): string {
+        return this._titre
+    }
+
+    public set content(content: string) {
+        this._content = content
+    }
+
+    public get content(): string {
+        return this._content
     }
     
     /**

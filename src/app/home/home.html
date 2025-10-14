@@ -1,0 +1,19 @@
+<ng-template #panelInfo let-info="info">
+    <div class="info">
+        {{ info }}
+    </div>
+</ng-template>
+
+@if (notes.length) {
+    <ng-container 
+        *ngTemplateOutlet="panelInfo; context: {info: 'Liste des notes'}">
+    </ng-container>
+
+    @for (note of notes; track note.id) {
+        <p>{{ note.titre }}</p>
+    }
+} @else {
+    <ng-container 
+        *ngTemplateOutlet="panelInfo; context: {info: 'Chargement en cours...'}">
+    </ng-container>
+}

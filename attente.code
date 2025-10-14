@@ -1,0 +1,30 @@
+<article>
+  <header>
+    <div appBubble>
+      {{ note.titre | initial }}
+    </div>
+
+    <div>{{ note.titre }}</div>
+  </header>
+
+  <p class="badge">{{ note.date | date }}</p>
+
+  <div
+    [ngClass]="{'toggle-button': true, 'is-open': !isOpen, 'is-closed': isOpen}"
+    (click)="openClose()"
+  >-></div>
+
+  <div [hidden]="!isOpen">
+    <hr>
+    <ul>
+        <li>
+          <ul>
+          @for (theme of themes; track theme.id) {
+            <app-note
+              [theme]="theme"></app-note>
+          }
+          </ul>
+      </li>
+    </ul>
+  </div>
+</article>

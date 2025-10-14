@@ -1,23 +1,9 @@
 <app-toolbar></app-toolbar>
 
-<h1>Hello, {{ title() }}</h1>
-<p>Congratulations! Your app is running. 🎉</p>
+<header>
+  <h1>Hello, {{ title() }}</h1>
+</header>
 
-<p>
-  <span>{{ note.id }} {{ theme }}</span>
-</p>
-
-<ul>
-  <li>
-    {{ note.date | date : '/' | uppercase }}
-    <ul>
-    @for (theme of themes; track theme.id) {
-      <app-note
-        [theme]="theme"></app-note>
-    }
-    </ul>
-  </li>
-</ul>
-
-<input [type]="inputType" placeholder="Type your password...">
-<button type="button" (click)="switchVisibililty()">Show / Hide</button>
+<main>
+  <router-outlet></router-outlet>
+</main>

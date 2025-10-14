@@ -1,14 +1,52 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    .theme {
-        height: 3em;
-        border: solid 1px black;
+article {
+    border: solid 1px #000;
+    border-radius: .4em;
+    padding: 1.5em;
+    hr {
+        width: 75%;
+    }
 
-        &.is-even {
-            background-color: aquamarine;
+    p {
+        &.badge {
+            width: 10em;
+            padding: .5em;
+            color: #fff;
+            font-size: .8em;
+            background-color: hsla(200, 25%, 30%, .7);
+            border-radius: .4em;
+            text-align: center;
         }
     }
+    header {
+        display: flex;
+
+        div {
+            &:nth-child(2) {
+                height: 3em;
+                line-height: 3em;
+                vertical-align: middle;
+                margin-left: 1em;
+            }
+        }
+    }
+    .toggle-button {
+        font-size: 2em;
+        font-weight: bold;
+        height: 1em;
+        width: 1em;
+
+        &.is-open {
+            transform: rotate(90deg);
+        }
+
+        &.is-closed {
+            transform: rotate(0deg);
+        }
+    }
+
+    ul {
+        list-style-type: none;
+    }
 }
+
 
