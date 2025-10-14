@@ -2,6 +2,7 @@ import { ThemeType } from "./theme.type"
 
 export class NoteRepository {
     private _id = 0
+    private _date: Date = new Date()
     private _themes = new Map<number, string>()
 
     /**
@@ -18,6 +19,14 @@ export class NoteRepository {
         this._id = value
     }
 
+    public get date(): Date {
+        return this._date
+    }
+
+    public set date(date: Date) {
+        this._date = date
+    }
+    
     /**
      * 
      * @param theme 

@@ -6,18 +6,15 @@
 </p>
 
 <ul>
-  @for (theme of themes; track theme.id) {
-      <li 
-        [ngClass]="{'theme': true,
-          'is-even': theme.id! % 2 === 0,
-          'is-odd': theme.id! % 2 !== 0 
-        }">{{ theme.value }}</li>
-
-        <app-note
-          [theme]="theme"
-          (onUpdateTheme)="updateTheme($event)"
-        ></app-note>
-  }
+  <li>
+    {{ note.date | date : '/' | uppercase }}
+    <ul>
+    @for (theme of themes; track theme.id) {
+      <app-note
+        [theme]="theme"></app-note>
+    }
+    </ul>
+  </li>
 </ul>
 
 <input [type]="inputType" placeholder="Type your password...">

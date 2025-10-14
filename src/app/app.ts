@@ -2,12 +2,13 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NoteRepository } from './note/model/note-repository';
 import { ThemeType } from './note/model/theme.type';
-import { NgClass } from "@angular/common";
+import { NgClass, UpperCasePipe } from "@angular/common";
 import { Note } from './note/note';
+import { DatePipe } from './shared/pipes/date-pipe'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgClass, Note],
+  imports: [RouterOutlet, NgClass, Note, DatePipe, UpperCasePipe],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -27,6 +28,7 @@ export class App {
     this.note.addTheme('Angular init')
     this.note.addTheme('Class Angular')
     this.note.addTheme('Components')
+    this.note.date = new Date('2025-10-13')
 
     this.theme = this.note.themes.get(1)
 
