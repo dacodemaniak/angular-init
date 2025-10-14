@@ -5,10 +5,11 @@ import { ThemeType } from './note/model/theme.type';
 import { NgClass, UpperCasePipe } from "@angular/common";
 import { Note } from './note/note';
 import { DatePipe } from './shared/pipes/date-pipe'
+import { Toolbar } from './shared/components/toolbar/toolbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgClass, Note, DatePipe, UpperCasePipe],
+  imports: [RouterOutlet, NgClass, Note, DatePipe, UpperCasePipe, Toolbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
