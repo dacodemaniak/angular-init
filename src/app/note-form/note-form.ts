@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ThemeService } from '../note/theme-service';
 import { Observable } from 'rxjs';
 import { ThemeType } from '../note/model/theme.type';
+import { NoteRepository } from '../note/model/note-repository';
 
 @Component({
   selector: 'app-note-form',
@@ -48,5 +49,19 @@ export class NoteForm {
 
   onSubmit() {
     console.log(`Got ${JSON.stringify(this.form.value)}`)
+
+    const noteRepository = new NoteRepository()
+    noteRepository.titre = this.c['titre'].value
+    noteRepository.content = this.c['content'].value
+    noteRepository.date = new Date()
+    for (const theme of this.c['themes'].value) {
+      noteRepository.themes.set(theme.id, theme.value)
+    }
+
+    this._service.add(noteRepository)
+      .subscribe({
+        next: (note: NoteRepository) => {},
+        error: (error: any) => {}
+      })
   }
 }

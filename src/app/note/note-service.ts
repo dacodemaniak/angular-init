@@ -2,8 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { NoteServiceInterface } from './note-service-interface';
 import { NoteRepository } from './model/note-repository';
 import { delay, dematerialize, map, materialize, Observable, of, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Note } from './note';
+import { ThemeType } from './model/theme.type';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +46,30 @@ export class NoteService implements NoteServiceInterface {
     throw new Error('Method not implemented.');
   }
 
-  add(note: NoteRepository): NoteRepository {
-    throw new Error('Method not implemented.');
+  add(note: NoteRepository): Observable<HttpResponse<NoteRepository>> {
+    const endPoint = 'http://localhost:3000/notes'
+
+    // Préparer la donnée à transmettre
+    const rawData: any = {
+      titre: note.titre,
+      content: note.content,
+      date: note.date,
+      themes: (() => {
+        const themesArray: Array<ThemeType> = []
+        note.themes.forEach((value: string, key: number) => {
+          themesArray.push({id: key, value})
+        })
+        return themesArray
+      })() // Autocalled function
+    }
+
+    return this._httpClient.post<any>(
+      endPoint,
+      rawData,
+      {
+        observe: 'response'
+      }
+    )
   }
 
 }
