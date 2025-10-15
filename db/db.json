@@ -1,0 +1,54 @@
+{
+    "notes": [
+        {
+            "id": 1,
+            "titre": "Présentation Angular",
+            "content": "CLI Angular, création de composants, pipes, directives, services",
+            "date": "2025-10-13T09:00:00.000Z",
+            "themes": [
+                {
+                    "id": 1,
+                    "value": "CLI"
+                },
+                                {
+                    "id": 2,
+                    "value": "Schematics"
+                }
+            ]
+        },
+    {
+            "id": 2,
+            "titre": "Services Angular",
+            "content": "Programmation asynchrone avec RxJS",
+            "date": "2025-10-14T09:00:00.000Z",
+            "themes": [
+                {
+                    "id": 3,
+                    "value": "Pattern Observer"
+                },
+                                {
+                    "id": 4,
+                    "value": "RxJS"
+                }
+            ]
+        }
+    ],
+    "themes": [
+        {
+            "id": 1,
+            "value": "CLI"
+        },
+                        {
+            "id": 2,
+            "value": "Schematics"
+        },
+        {
+            "id": 3,
+            "value": "Pattern Observer"
+        },
+        {
+            "id": 4,
+            "value": "RxJS"
+        }       
+    ]
+}

@@ -1,1 +1,34 @@
-<p>note-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput formControlName="titre" placeholder="Titre de la note...">
+        @if ((c['titre'].errors && c['titre'].touched) || c['titre'].dirty) {
+            <mat-error>
+                @if (c['titre'].hasError('required')) {
+                    Ce champ est requis et ne peut pas être vide
+                } @else {
+                    Ce champ nécessite un minimum de 5 caractères
+                }
+            </mat-error>
+        }
+        
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Détail</mat-label>
+        <textarea matInput formControlName="content" placeholder="Détail de la note..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Thèmes</mat-label>
+        <mat-select
+        formControlName="themes"
+        multiple>
+            @for (theme of themes$ | async; track theme.id) {
+                <mat-option [value]="theme">{{ theme.value }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Valider</button>
+</form>
+
+{{ form.value | json }}
